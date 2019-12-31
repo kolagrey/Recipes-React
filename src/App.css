@@ -7,6 +7,49 @@
   pointer-events: none;
 }
 
+.curved-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.curved {
+  border-radius: 10px !important;
+}
+
+.has-margin-bottm-10 {
+  margin-bottom: 30px !important;
+}
+
+.has-margin-top-5 {
+  margin-top: 5%;
+}
+
+.has-padding-top-10 {
+  margin-top: 20px;
+}
+
+.has-margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+.has-padding-bottom-30 {
+  padding-bottom: 30px;
+}
+
+.card ul li {
+  padding-bottom: 10px !important;
+  padding-top: 10px !important;
+  border-bottom: 1px solid rgb(207, 201, 201);
+}
+
+.is-nav-fixed {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -32,6 +75,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
