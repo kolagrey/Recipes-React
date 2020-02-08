@@ -5,7 +5,7 @@ class About extends Component {
     render() {
         return (
             <Section>
-                <h1>Welcome to about</h1>
+                <h1>Welcome to About Dolapo Grey</h1>
             </Section >
         );
     }

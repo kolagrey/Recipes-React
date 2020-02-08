@@ -9,16 +9,16 @@ const helper = {
         if (num < 999)
             return num;
     },
-    saveRecipes(data) {
+    saveRecipes({data}) {
         sessionStorage.setItem('recipes', JSON.stringify(data));
     },
     getSavedRecipes() {
         return JSON.parse(sessionStorage.getItem('recipes') || '[]');
     },
-    saveRecipe(id, data) {
+    saveRecipe({id, data}) {
         sessionStorage.setItem(id, JSON.stringify(data));
     },
-    getSavedRecipe(id) {
+    getSavedRecipe({id}) {
         return JSON.parse(sessionStorage.getItem(id) || '{}');
     }
 };

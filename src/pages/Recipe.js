@@ -17,24 +17,24 @@ class Recipe extends Component {
 
     componentDidMount() {
         const id = this.props.match.params.id;
-        const recipe = helper.getSavedRecipe(id);
+        const recipe = helper.getSavedRecipe({id});
         if(recipe.recipecode) {
             this.setState({
                 recipe,
                 loading: false
             });
         } else {
-            this.getFromOnline(id);
+            this.getFromOnline({id});
         }
     }
 
-    getFromOnline(id) {
-        recipeService.getRecipe(id).then(data => {
+    getFromOnline({id}) {
+        recipeService.getRecipe({id}).then(data => {
             this.setState({
                 recipe: data,
                 loading: false
             }, () =>{
-                helper.saveRecipe(id, data);
+                helper.saveRecipe({id, data});
             });
         }).catch(err => {
             this.setState({
@@ -43,7 +43,7 @@ class Recipe extends Component {
         });
     }
 
-    displayRecipe(recipe) {
+    displayRecipe({recipe}) {
         if (recipe.recipecode) {
             return <RecipeDisplay data={recipe} />;
         } else {
@@ -51,16 +51,27 @@ class Recipe extends Component {
         }
     }
 
-    loadingText() {
-        if (!this.state.hasError)
+    loading() {
+        if (!this.state.hasError) {
             return (
-                <div className="has-text-centered">Loading...</div>
+                <div className="has-text-centered">
+                    <progress class="progress is-small is-primary" max="100">25%</progress>
+                </div>
             )
+        } else {
+            return (
+                <div className="has-text-centered">
+                    <h1>OOpsy Daisy!</h1>
+                </div>
+            )
+        }
     }
 
     errorMessage() {
         return (
-            <div className="has-text-centered has-text-danger">There was an error getting recipes.</div>
+            <div className="has-text-centered has-text-danger">
+                <h1>OOpsy! There was an error getting this recipe. Are you offline?</h1>
+            </div>
         )
     }
 
@@ -68,8 +79,8 @@ class Recipe extends Component {
         const { loading, recipe, hasError } = this.state;
         return (
             <Section>
-                {loading && this.loadingText()}
-                {!loading && this.displayRecipe(recipe)}
+                {loading && this.loading()}
+                {!loading && !hasError && this.displayRecipe({recipe})}
                 {hasError && this.errorMessage()}
             </Section >
         );
