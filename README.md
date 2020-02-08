@@ -31,7 +31,7 @@ The build is minified and the filenames include the hashes.<br />
 
 ### Redux & Redux Thunk
 
-State management is Redux with Redux Thunk for asyn actions. However, the recipe page uses local state, with axios call to the Recipes API if offline data is not available. 
+State management is Redux with Redux Thunk for async actions. However, the recipe page uses local state, with axios call to the Recipes API if offline data is not available. 
 
 ### Local Storage
 I implemented "offline storage" using localStorage. You can hook anything you want to replace local storage or write your own just for kicks :-P
